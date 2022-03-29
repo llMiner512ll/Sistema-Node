@@ -1,26 +1,26 @@
 import { Schema, model } from "mongoose";
 
-const TaskSchema = Schema(
-  {
+const TaskSchema = Schema({
     title: {
-      type: String,
-      required: true,
-      trim: true,
-      unique: true,
+        type: String,
+        required: true,
+        trim: true,
+        unique: true,
     },
     description: {
-      type: String,
-      trim: true,
+        type: String,
+        trim: true,
     },
     done: {
-      type: Boolean,
-      default: false,
+        type: Boolean,
+        default: false,
     },
-  },
-  {
+    tipo: {
+        type: Boolean,
+    },
+}, {
     timestamps: true,
     versionKey: false,
-  }
-);
+});
 
 export default model("Task", TaskSchema);

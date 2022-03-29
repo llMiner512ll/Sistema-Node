@@ -1,0 +1,70 @@
+{{#if tasks}}
+  <table class="table table-striped table-active">
+    <thead class="table-dark align-middle">
+      <tr>
+        <th scope="col">Núm</th>
+        <th scope="col">Nombre de Tarea</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Tipo de tarea</th>
+        <th scope="col">Operaciones</th>
+        <th scope="col">Creación</th>
+
+      </tr>
+    </thead>
+    <tbody class="table-warning">
+      {{#each tasks}}
+        <tr>
+          <th>{{@index}}</th>
+          <td><strong>{{title}}</strong></td>
+          <td>{{description}}</td>
+          {{#if tipo}}
+            <td>Individual</td>
+          {{else}}
+            <td>Equipo</td>
+          {{/if}}
+          <td>
+            {{#if done}}
+              {{!apertura del if}}
+              <a
+                class="btn btn-success w-100 m-2"
+                href="/tasks/{{_id}}/toggleDone"
+              >Hecho</a>
+            {{else}}
+              <a
+                class="btn btn-secondary w-100 m-2"
+                href="/tasks/{{_id}}/toggleDone"
+              >Sin Hacer</a>
+            {{/if}}
+            {{!cierre del if}}
+            <br />
+            <a
+              class="btn btn-danger w-100 m-2"
+              href="/tasks/{{_id}}/delete"
+            >Eliminar</a>
+            <br />
+            <a
+              class="btn btn-info w-100 m-2"
+              href="/tasks/{{_id}}/edit"
+            >Editar</a>
+          </td>
+
+          <td><strong>Creado</strong>
+            <br />{{createdAt}}
+            <br />
+            <strong>Actualizado</strong>
+            <br />{{updatedAt}}
+          </td>
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <div>
+    <div>
+      <h1>No hay tareas</h1>
+      <h5>Eres libre de todo pecado amiguito</h5>
+      <img src="/img/pollo.jpg" class="w-25" />
+    </div>
+  </div>
+{{/if}}
